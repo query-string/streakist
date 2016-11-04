@@ -1,0 +1,15 @@
+development: &base
+  session_secret: xxx
+  database_url: 'postgres://localhost/streakist_development'
+  assets_server_url: "http://localhost:1234"
+  precompiled_assets: false
+  precompiled_assets_host:
+  app_mailer_from_email:
+  bugsnag_api_key:
+  postmark_api_key:
+test:
+  <<: *base
+  database_url: 'postgres://localhost/streakist_test'
+  postmark_api_key: 'POSTMARK_API_TEST'
+production:
+  <<: *base
