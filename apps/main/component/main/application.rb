@@ -3,6 +3,8 @@ require "rack/csrf"
 require "dry-web-roda"
 require "main/container"
 require "roda_plugins"
+require "omniauth"
+require "omniauth-todoist"
 
 module Main
   class Application < Dry::Web::Roda::Application
@@ -16,6 +18,9 @@ module Main
     use Rack::Session::Cookie, key: "streakist.session", secret: Streakist::Container.settings.session_secret
     use Rack::Csrf, raise: true
     use Bugsnag::Rack
+    use OmniAuth::Builder do
+      provider :todoist, Streakist::Container.settings.todoist_client_id, Streakist::Container.settings.todoist_client_secret
+    end
 
     plugin :error_handler
     plugin :flash

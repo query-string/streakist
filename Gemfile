@@ -37,6 +37,9 @@ gem "transproc", git: "https://github.com/solnic/transproc"
 # 3rd party services
 gem "bugsnag"
 gem "postmark"
+gem "omniauth"
+gem "omniauth-todoist", path: "/Users/query-string/sites/gems/omniauth-todoist"
+
 
 group :development, :test do
   gem "guard-rspec", require: false

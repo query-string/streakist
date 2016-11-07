@@ -21,7 +21,8 @@ module Streakist
     setting :app_mailer_from_email, Types::String
 
     setting :bugsnag_api_key, Types::String
-
     setting :postmark_api_key, Types::String
+    setting :todoist_client_id, Types::String
+    setting :todoist_client_secret, Types::String
   end
 end
