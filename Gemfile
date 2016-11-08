@@ -44,6 +44,8 @@ gem "omniauth-todoist", path: "/Users/query-string/sites/gems/omniauth-todoist"
 group :development, :test do
   gem "guard-rspec", require: false
   gem "pry-byebug"
+  gem "foreman"
+  gem "notgun"
 end
 
 group :test do
