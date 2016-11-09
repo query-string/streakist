@@ -3,8 +3,10 @@ module Main
     route "auth" do |r|
       r.on "todoist" do
         r.get "callback" do
-          p r.env["omniauth.auth"]
-          r.redirect "/"
+          r.resolve "main.operations.authentications.create" do |create_authentication|
+            create_authentication.(r.env["omniauth.auth"])
+            r.redirect "/"
+          end
         end
       end
     end
