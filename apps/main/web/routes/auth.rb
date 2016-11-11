@@ -6,11 +6,12 @@ module Main
           r.resolve "main.operations.authentications.create" do |create_authentication|
             create_authentication.(r.env["omniauth.auth"]) do |m|
               m.success do |refund|
-                r.redirect "/"
+                flash[:notice] = "SUccessfully authenticated"
               end
               m.failure do |message|
-                r.redirect "/"
+                flash[:alert] = "Validation error #{message}"
               end
+              r.redirect "/"
             end
           end
         end
