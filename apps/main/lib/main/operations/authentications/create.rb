@@ -12,7 +12,7 @@ module Main
         include Dry::Matcher.for(:call, with: Dry::Matcher::EitherMatcher)
 
         def call(authentication)
-          validation = Main::Validation::AuthenticationParamsSchema.(uid: authentication.uid, token: authentication.credentials["token"])
+          validation = Main::Validation::AuthenticationParamsSchema.(uid: authentication.uid.to_i, token: authentication.credentials["token"])
 
           if validation.success?
             authentication = authentications.create(validation.output)
