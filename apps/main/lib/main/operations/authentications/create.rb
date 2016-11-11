@@ -1,3 +1,4 @@
+require "dry/matcher/either_matcher"
 require "dry-monads"
 require "main/import"
 require "main/validation/authentication_params_schema"
@@ -8,9 +9,11 @@ module Main
       class Create
         include Main::Import["main.persistence.repositories.authentications"]
         include Dry::Monads::Either::Mixin
+        include Dry::Matcher.for(:call, with: Dry::Matcher::EitherMatcher)
 
         def call(authentication)
           validation = Main::Validation::AuthenticationParamsSchema.(uid: authentication.uid, token: authentication.credentials["token"])
+
           if validation.success?
             authentication = authentications.create(validation.output)
             Right(authentication)

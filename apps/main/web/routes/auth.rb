@@ -9,7 +9,7 @@ module Main
                 r.redirect "/"
               end
               m.failure do |message|
-                p message
+                r.redirect "/"
               end
             end
           end
