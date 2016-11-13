@@ -1,2 +1,5 @@
 en:
   hello: Hello world
+  errors:
+    token_unique?: "is already taken"
+

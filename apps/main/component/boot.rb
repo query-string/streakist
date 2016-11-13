@@ -1,4 +1,6 @@
 require_relative "main/container"
+# Load manually registered dependencies
+Main::Container.require "component/container/persistence"
 
 Main::Container.finalize! do |container|
   require "main/enqueue"
